@@ -1,6 +1,7 @@
 # docker-engine-api
 
-Implements the complete API as of https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/
+Implements the complete API as of https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/.
+
 See the doc and example folders for documentation.
 
 This lib was part of a POC/Demo and was coded while reading along the docker documentation.
