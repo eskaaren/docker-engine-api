@@ -1,0 +1,60 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Nodes</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Nodes
+
+=head1 DESCRIPTION
+
+Module that handles the Nodes section of the Docker API.
+
+=head2 Methods
+
+=over
+
+=item B<C<< list >>>
+
+example:
+
+  list(
+    {
+      filters => {
+        role => 'manager'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#list-nodes>
+
+
+=item B<C<< inspect >>>
+
+example:
+
+  inspect(
+    {
+      id => 'nodeid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-a-node>
+
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

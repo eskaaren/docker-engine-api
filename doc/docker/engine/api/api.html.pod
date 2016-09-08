@@ -1,0 +1,56 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API
+
+=head1 DESCRIPTION
+
+This module presents a complete API wrapper for the Docker Engine.
+See the documentation for each submodule for methods and examples.
+
+=head2 Synopsis
+
+=over
+
+=item B<C<< example: >>>
+
+  my $api = Docker::Engine::API->new(
+    base_url => $ENV{'provided_env_variable'} // 'http://127.0.0.1:3375'
+  );
+
+  my $swarm = $api->{swarm}->init(
+    ListenAddr => '127.0.0.1',
+    ForceNewCluster => JSON::PP->true()
+  );
+
+  my $container = $api->{containers}->create(
+    {
+      name => 'containername',
+      config => {
+        Cmd => ['ls -la'],
+        Image => 'alpine:latest'
+      }
+    }
+  );
+
+
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

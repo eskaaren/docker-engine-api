@@ -1,0 +1,92 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Volumes</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Volumes
+
+=head1 DESCRIPTION
+
+Module that handles the Volumes section of the Docker API.
+
+=head2 Methods
+
+=over
+
+=item B<C<< list >>>
+
+example:
+
+  list(
+    {
+      filters => {
+        name => ['volume-name'],
+        dangling => ['true'],
+        driver => ['volume-driver-name']
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#list-volumes>
+
+
+=item B<C<< create >>>
+
+example:
+
+  create(
+    {
+      Name => 'testvolume',
+      Driver => 'local', # local is default, so optional
+      DriverOpts => { Driver => 'specific-setting' } # Optional with local..
+      Labels => {
+        com.example.label1 => 'value'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#create-a-volume>
+
+
+=item B<C<< inspect >>>
+
+example:
+
+  inspect(
+    {
+      name = 'name'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-a-volume>
+
+
+=item B<C<< remove >>>
+
+example:
+
+  remove(
+    {
+      name => 'name'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#remove-a-volume>
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

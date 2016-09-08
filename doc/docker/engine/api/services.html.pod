@@ -1,0 +1,119 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Services</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Services
+
+=head1 DESCRIPTION
+
+Module that handles the Services section of the Docker API.
+
+=head2 Methods
+
+=over
+
+=item B<C<< list >>>
+
+example:
+
+  list(
+    filters => {
+      id => 'serviceid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#list-services>
+
+
+=item B<C<< create >>>
+
+example:
+
+  create(
+    {
+      Name   => 'servicename',
+      Labels => {
+        key => 'value'
+      },
+      TaskTemplate => {
+        ContainerSpec => {
+          Image => 'nginx:alpine',
+      }
+      },
+      Mode => {
+        Replicated => {
+          Replicas => 3
+        }
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#create-a-service>
+
+
+=item B<C<< remove >>>
+
+example:
+
+  remove(
+    {
+      id => 'serviceid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#remove-a-service>
+
+
+=item B<C<< inspect >>>
+
+example:
+
+  inspect(
+    {
+      id => 'serviceid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-one-or-more-services>
+
+
+=item B<C<< update >>>
+
+example:
+
+  update(
+    {
+      id           => 'serviceid',
+      version      => 'serviceversion', # get from inspect
+      TaskTemplate => {
+        ContainerSpec => {
+          Image => 'nginx:alpine'
+        }
+      },
+      Labels => {
+        key => 'val'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#update-a-service>
+
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

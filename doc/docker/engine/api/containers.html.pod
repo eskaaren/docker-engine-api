@@ -1,0 +1,355 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Containers</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Containers
+
+=head1 DESCRIPTION
+
+Module that handles the Containers section of the Docker API.
+
+=head2 Methods
+
+=over
+
+=item B<C<< list >>>
+
+example:
+
+  list(
+    {
+      all => 1,
+      filters => {
+        status => 'running'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#3-1-containers>
+
+
+=item B<C<< create >>>
+
+example:
+
+  create(
+    {
+      name => 'containername',
+      config => {
+        Cmd => ['ls -la'],
+        Image => 'alpine:latest'
+      }
+    }
+  );
+
+See the official API doc for all possible parameters. The method will overwrite defaults with the values passed via the config parameter.
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#create-a-container>
+
+
+=item B<C<< inspect >>>
+
+example:
+
+  inspect(
+    {
+      id => 'containerid',
+      size => 1
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-a-container>
+
+
+=item B<C<< top >>>
+
+example:
+
+  top(
+    {
+      id => 'containerid'
+      ps_args => 'aux'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#list-processes-running-inside-a-container>
+
+
+=item B<C<< logs >>>
+
+example:
+
+  logs(
+    {
+      id => 'containerid',
+      details => 1,
+      follow => 1,
+      stderr => 1
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#get-container-logs>
+
+
+=item B<C<< changes >>>
+
+example:
+
+  changes(
+    {
+      id => 'containerid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-changes-on-a-container-s-filesystem>
+
+
+=item B<C<< export >>>
+
+example:
+
+ export(
+   {
+      id => 'containerid'
+   }
+ );
+
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#export-a-container>
+
+
+=item B<C<< stats >>>
+
+example:
+
+  stats(
+    {
+      id => 'containerid',
+      stream => 0
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#get-container-stats-based-on-resource-usage>
+
+
+=item B<C<< resize >>>
+
+example:
+
+  resize(
+    {
+      id => 'containerid',
+      h => 40,
+      w => 80
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#resize-a-container-tty>
+
+
+=item B<C<< start >>>
+
+example:
+
+  start(
+    {
+      id => 'containerid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#start-a-container>
+
+
+=item B<C<< stop >>>
+
+example:
+
+  stop(
+    {
+      id => 'containerid',
+      t=> 30
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#stop-a-container>
+
+
+=item B<C<< restart >>>
+
+example:
+
+  restart(
+    {
+      id => 'containerid',
+      t => 60
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#restart-a-container>
+
+
+=item B<C<< kill >>>
+
+example:
+
+  kill(
+    {
+      id => 'containerid',
+      signal => 'SIGKILL'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#kill-a-container>
+
+
+=item B<C<< update >>>
+
+example:
+
+  update(
+    {
+      id => 'containerid',
+      config => {
+        Cmd => ['top'],
+        Image => 'alpine:latest'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#update-a-container>
+
+
+=item B<C<< rename >>>
+
+example:
+
+  rename(
+    {
+      id => 'containerid',
+      name => 'newname'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#rename-a-container>
+
+
+=item B<C<< pause >>>
+
+example:
+
+  pause(
+    {
+      id => 'containerid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#pause-a-container>
+
+
+=item B<C<< unpause >>>
+
+example:
+
+  unpause(
+    {
+      id => 'containerid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#unpause-a-container>
+
+
+=item B<C<< attach >>>
+
+example:
+
+  attach(
+    {
+      id => 'containerid',
+      detachKeys => 'ctrl-<c>'
+      stdin => 0,
+      stdout => 1
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#attach-to-a-container>
+
+
+=item B<C<< attach_ws >>>
+
+example:
+
+  attach_ws(
+    {
+      id => 'containerid',
+      detachKeys => 'ctrl-<c>'
+      stdin => 0,
+      stdout => 1
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#attach-to-a-container-websocket>
+
+
+=item B<C<< wait >>>
+
+example:
+
+  wait(
+    {
+      id => 'containerid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#wait-a-container>
+
+
+=item B<C<< remove >>>
+
+example:
+
+  remove(
+    {
+      id => 'containerid',
+      v => 1,
+      force => 1
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#remove-a-container>
+
+
+=item B<C<< archive >>>
+
+example:
+
+  archive(
+    {
+      id => 'containerid',
+      op => 'get | put | head'
+      path => '/my/path/',
+
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#retrieving-information-about-files-and-folders-in-a-container>
+
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

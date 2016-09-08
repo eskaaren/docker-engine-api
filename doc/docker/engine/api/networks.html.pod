@@ -1,0 +1,122 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Networks</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Networks
+
+=head1 DESCRIPTION
+
+Module that handles the Networks section of the Docker API.
+
+=head2 Methods
+
+=over
+
+=item B<C<< list >>>
+
+example:
+
+  list(
+    {
+      filters => {
+        name => 'bridge'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#list-networks>
+
+
+=item B<C<< inspect >>>
+
+example:
+
+  inspect(
+    {
+      id => 'networkid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-network>
+
+
+=item B<C<< create >>>
+
+example:
+
+  create(
+    Name => 'networkname',
+    CheckDuplicate => JSON::PP->true(),
+    Labels => {
+      key => 'value'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#create-a-network>
+
+
+=item B<C<< connect >>>
+
+example:
+
+  connect(
+    {
+      id => 'networkid',
+      Container => 'containerid',
+      EndpointConfig => {
+        IPAMConfig => {
+          IPv4Address => 192.168.1.12
+        }
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#connect-a-container-to-a-network>
+
+
+=item B<C<< disconnect >>>
+
+example:
+
+  disconnect(
+    {
+      id => 'networkid',
+      Container => 'containerid',
+      Force => JSON::PP->true()
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#disconnect-a-container-from-a-network>
+
+
+
+=item B<C<< remove >>>
+
+example:
+
+  remove(
+    id => 'networkid'
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#remove-a-network>
+
+
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

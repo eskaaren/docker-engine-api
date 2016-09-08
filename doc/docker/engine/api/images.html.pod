@@ -1,0 +1,168 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Images</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Images
+
+=head1 DESCRIPTION
+
+Module that handles the Images section of the Docker API.
+
+=head2 Methods
+
+=over
+
+
+=item B<C<< list >>>
+
+example:
+
+  list(
+    {
+      all => 1,
+      filters => {
+        dangling => 'true',
+        label => 'role=manager'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#list-images>
+
+
+=item B<C<< build >>>
+
+example:
+
+  build(
+    {
+      dockerfile => 'dir/Dockerfile',
+      t => 'tag',
+      q => 0,
+      labels => {
+        role => 'manager'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#build-image-from-a-dockerfile>
+
+
+=item B<C<< create >>>
+
+example:
+
+  create(
+    {
+      fromImage => 'alpine',
+      tag       => 'latest'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#create-an-image>
+
+
+=item B<C<< inspect >>>
+
+example:
+
+  inspect(
+    {
+      name => 'imagename'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-an-image>
+
+
+=item B<C<< history >>>
+
+example:
+
+  history(
+    {
+      name => 'imagename'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#get-the-history-of-an-image>
+
+
+=item B<C<< push >>>
+
+example:
+
+  push(
+    {
+      name => 'imagename'
+      tag => 'tag'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#push-an-image-on-the-registry>
+
+
+=item B<C<< tag >>>
+
+example:
+
+  tag(
+    {
+      name => 'imagename',
+      repo => 'repo',
+      tag => 'tag'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#tag-an-image-into-a-repository>
+
+
+=item B<C<< remove >>>
+
+example:
+
+  remove(
+    {
+      name => 'imagename',
+      force => 1
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#remove-an-image>
+
+
+=item B<C<< search >>>
+
+example:
+
+  search(
+    {
+      term => 'ubuntu',
+      limit => 1,
+      filters => {
+        'is-official' => 'true'
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#search-images>
+
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

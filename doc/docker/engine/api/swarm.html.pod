@@ -1,0 +1,102 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Swarm</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Swarm
+
+=head1 DESCRIPTION
+
+Module that handles the Swarm section of the Docker API.
+
+=head2 Methods
+
+=over
+
+=item B<C<< inspect >>>
+
+example:
+
+  inspect();
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-swarm>
+
+
+=item B<C<< init >>>
+
+example:
+
+  init(
+    {
+      ListenAddr => 'ip:port',
+      AdvertiseAddr => 'ip:port',
+      ForceNewCluster => JSON::PP->false()
+    }
+  );
+
+See docs for the parameter "Spec" to control cluster parameters.
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#initialize-a-new-swarm>
+
+
+=item B<C<< join >>>
+
+example:
+
+  join(
+    {
+      ListenAddr => 'ip:port',
+      AdvertiseAddr => 'ip:port',
+      RemoteAddrs => ["node1:port"],
+      JoinToken => 'token'
+    }
+  );
+
+L<>
+
+=item B<C<< leave >>>
+
+example:
+
+  leave(
+    force => 1
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#leave-a-swarm>
+
+
+=item B<C<< update >>>
+
+example:
+
+  update(
+    {
+      version => $version,
+      Raft    => {
+        HeartbeatTick => 55
+      },
+      CAConfig => {
+        NodeCertExpiry => 7776000000000000
+      }
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#update-a-swarm>
+
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

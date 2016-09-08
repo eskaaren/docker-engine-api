@@ -1,0 +1,195 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Misc</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Misc
+
+=head1 DESCRIPTION
+
+Module that handles the Misc section of the Docker API.
+
+=head2 Methods
+
+=over
+
+=item B<C<< auth >>>
+
+example:
+
+  auth(
+    {
+      username => 'user',
+      password => 'pass',
+      serveraddress => 'http://ip:port'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#check-auth-configuration>
+
+
+=item B<C<< info >>>
+
+example:
+
+  info();
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#display-system-wide-information>
+
+
+=item B<C<< version >>>
+
+example:
+
+  version();
+
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#show-the-docker-version-information>
+
+
+=item B<C<< _ping >>>
+
+example:
+
+  _ping();
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#ping-the-docker-server>
+
+
+=item B<C<< commit >>>
+
+example:
+
+  commit(
+    {
+      container => 'containerid',
+      repo      => 'repo',
+      tag       => 'tag',
+      comment   => 'My comment',
+      author    => 'Fakie Fake <fakie@fake.com>',
+      pause     => 0,
+      changes   => 'EXPOSE 6666',
+      config    => {
+        Hostname => 'hostname',
+        Cmd      => ['startmyserver.sh']
+      }
+    }
+  );
+
+See the docker docs for what may be put into the config hashref.
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#create-a-new-image-from-a-container-s-changes>
+
+
+=item B<C<< events >>>
+
+example:
+
+  events(
+     since => time_epoch,
+     until => time_epoch
+  );
+
+Needs both since and until, othwerwise hangs
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#monitor-docker-s-events>
+
+
+=item B<C<< get >>>
+
+example:
+
+  get(
+    name => 'name:tag'
+  );
+
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#get-a-tarball-containing-all-images-in-a-repository>
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#get-a-tarball-containing-all-images>
+
+
+=item B<C<< load(tarfile) >>>
+
+example:
+
+  load($tarfile);
+
+This function is not well documented, may not work as expected.
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#load-a-tarball-with-a-set-of-images-and-tags-into-docker>
+
+
+=item B<C<< exec >>>
+
+example:
+
+  exec(
+    {
+      id => 'containerid',
+      AttachStdin => JSON::PP->false(),
+      AttachStdout => JSON::PP->true(),
+      AttachStderr => JSON::PP->true(),
+      DetachKeys => '<ctrl>-<c>',
+      Tty => JSON::PP->false(),
+      Cmd => ['date']
+    }
+  );
+
+Use JSON::PP->true|false() for bool values.
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#exec-create>
+
+
+=item B<C<< exec_start >>>
+
+example:
+
+  exec_start(
+    {
+      id => 'execid',
+      Detach => JSON::PP->true(),
+      Tty => JSON::PP->false()
+    }
+  );
+
+Use JSON::PP->true|false() for bool values.
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#exec-start>
+
+
+=item B<C<< exec_resize >>>
+
+example:
+
+  exec_resize(
+    id => 'execid',
+    h => 40,
+    w => 90
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#exec-resize>
+
+=item B<C<< exec_inspect >>>
+
+example:
+
+  exec_inspect(
+    {
+      id => 'execid'
+    }
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#exec-inspect>
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut

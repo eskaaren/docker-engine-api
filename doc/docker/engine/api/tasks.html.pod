@@ -1,0 +1,58 @@
+=begin html
+
+<html>
+<head>
+<title>Docker::Engine::API::Tasks</title>
+<link rel="stylesheet" type="text/css" href="/pod.css">
+</head>
+<body>
+
+=end html
+
+=head1 NAME
+
+Docker::Engine::API::Tasks
+
+=head1 DESCRIPTION
+
+Module that handles the Tasks section of the Docker API.
+
+=head2 Methods
+
+=over
+
+=item B<C<< list >>>
+
+example:
+
+  list(
+    {
+      filters => {
+        name => 'taskname'
+      }
+    }
+  );
+
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#list-tasks>
+
+=item B<C<< inspect >>>
+
+example:
+
+  inspect(
+    id => 'taskid'
+  );
+
+L<https://docs.docker.com/engine/reference/api/docker_remote_api_v1.24/#inspect-a-task>
+
+
+=back
+
+=begin html
+
+</body>
+
+=end html
+
+=cut
